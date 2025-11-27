@@ -2,20 +2,24 @@
 // import mongoose from 'mongoose';
 // import { DB_NAME } from './constants';
 // import express from 'express';
-import dotenv from 'dotenv'
-import connectDB from './db/index.js';
 
-dotenv.config();
+// import dotenv from 'dotenv'
+// dotenv.config();
+
+import connectDB from './db/index.js';
+import { app } from './app.js';
+
 
 connectDB()
-.then(()=>{
-    app.listen(process.env.PORT,()=>{
+  .then(() => {
+    app.listen(process.env.PORT, () => {
       console.log(`app is listening on port ${process.env.PORT}`)
     })
-})
-.catch((err)=>{
+  })
+  .catch((err) => {
     console.log("error in app", err)
-})
+    process.exit(1);
+  })
 
 
 
